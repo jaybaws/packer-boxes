@@ -69,7 +69,7 @@
       {
         "output": "builds/{{.Provider}}-vscode-backend-centos7.box",
         "type": "vagrant",
-		"vagrantfile_template": "vagrantfile.erb"
+		"vagrantfile_template": "Vagrantfile.tpl"
       },
       {
         "type": "vagrant-cloud",
