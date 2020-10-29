@@ -20,16 +20,19 @@ This (centos-7) box ships with:
 
 Credits to Jeff Geerling, for [his repo](https://github.com/geerlingguy/packer-boxes/) that was used as a source of inspiration.
 
-# Spinning it up
+# Operation
 
-Run it using the obvious commands:
+## Set up a customizable Vagrantfile
+
+Run the set-up script as follows.
 
 ```
-vagrant init jaybaws/packer-boxes
-vagrant up
+mkdir myFolder
+cd myFolder
+source <(curl -s https://raw.githubusercontent.com/jaybaws/packer-boxes/main/setup.sh)
 ```
 
-# Customize the VM
+### Customize the VM
 
 The following environment variables can be set (prior to `vagrant up`) to override any of the VM settings:
 
@@ -39,6 +42,13 @@ The following environment variables can be set (prior to `vagrant up`) to overri
 - `VSCLB_TIMEZONE`, optional. Override the local time-zone, for instance `Europe/Amsterdam`.
 - `VSCLB_PS1`, optional. Customize the terminal prompt.
 - `VSCLB_WORKSPACE`, optional. Specifies any local folder on the host that will be synced to `/workspace` within the guest VM.
+
+## Spin it up
+
+```
+cd myFolder
+source <(curl -s https://raw.githubusercontent.com/jaybaws/packer-boxes/main/run.sh)
+```
 
 # Integrate with VS Code
 
