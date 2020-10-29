@@ -24,15 +24,17 @@ Credits to Jeff Geerling, for [his repo](https://github.com/geerlingguy/packer-b
 
 ## Set up a customizable Vagrantfile
 
-Run the set-up script as follows.
+Running `vagrant init` will result in a working VM, but you may want to use the customize Vagrantfile.
 
 ```
 mkdir myFolder
 cd myFolder
-source <(curl -s https://raw.githubusercontent.com/jaybaws/packer-boxes/main/setup.sh)
+export $BOX_VER=1.0.1
+vagrant box add --box-version $BOX_VER jaybaws/vscode-backend-centos7
+cp ~/.vagrant.d/boxes/jaybaws-VAGRANTSLASH-vscode-backend-centos7/$BOX_VER/virtualbox/Vagrantfile .
 ```
 
-### Customize the VM
+### Customize the VM (optional)
 
 The following environment variables can be set (prior to `vagrant up`) to override any of the VM settings:
 
@@ -46,13 +48,12 @@ The following environment variables can be set (prior to `vagrant up`) to overri
 ## Spin it up
 
 ```
-cd myFolder
-source <(curl -s https://raw.githubusercontent.com/jaybaws/packer-boxes/main/run.sh)
+vagrant up
 ```
 
 # Integrate with VS Code
 
-Finally, add this to your `~/.ssh/config` file:
+Finally, add the output of `vagrant ssh-config` to your `~/.ssh/config`. That could look like this:
 
 ```yaml
 Host dev.linux.backend.local
