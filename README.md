@@ -26,12 +26,22 @@ Credits to Jeff Geerling, for [his repo](https://github.com/geerlingguy/packer-b
 
 Running `vagrant init` will result in a working VM, but you may want to use the customize Vagrantfile.
 
+On Cygwin, or any Linux like command shell:
 ```
 mkdir myFolder
 cd myFolder
-export $BOX_VER=1.0.1
+export BOX_VER=1.0.1
 vagrant box add --box-version $BOX_VER jaybaws/vscode-backend-centos7
 cp ~/.vagrant.d/boxes/jaybaws-VAGRANTSLASH-vscode-backend-centos7/$BOX_VER/virtualbox/Vagrantfile .
+```
+
+On the Windows command prompt:
+```
+md myFolder
+cd myFolder
+set BOX_VER=1.0.1
+vagrant box add --box-version %BOX_VER% jaybaws/vscode-backend-centos7
+copy %USERPROFILE%\.vagrant.d\boxes\jaybaws-VAGRANTSLASH-vscode-backend-centos7\%BOX_VER%\virtualbox\Vagrantfile
 ```
 
 ### Customize the VM (optional)
