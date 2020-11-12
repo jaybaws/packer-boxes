@@ -14,6 +14,7 @@ This (centos-7) box ships with:
 - Ansible-lint
 - Molecule
 - Docker
+- Testinfra
 
 # Sources
 - My [Packer Sources](https://github.com/jaybaws/packer-boxes)
@@ -54,6 +55,8 @@ The following environment variables can be set (prior to `vagrant up`) to overri
 - `VSCLB_TIMEZONE`, optional. Override the local time-zone, for instance `Europe/Amsterdam`.
 - `VSCLB_PS1`, optional. Customize the terminal prompt.
 - `VSCLB_WORKSPACE`, optional. Specifies any local folder on the host that will be synced to `/workspace` within the guest VM.
+- `VSCLB_PKEY`, optional. Specifies the location to your local private SSH key. It wil be copied to `/home/vagrant/.ssh/id_rsa`, so GIT automatically works.
+- `VSCLB_KH`, optional. Specifies the location to your local `known_hosts` file. It will be copied to `/home/vagrant/.ssh/known_hosts`, so GIT automatically works.
 
 ## Spin it up
 
