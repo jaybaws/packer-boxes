@@ -8,6 +8,7 @@ sudo -u vagrant pip3 install --user yamllint
 sudo -u vagrant pip3 install --user ansible
 sudo -u vagrant pip3 install --user ansible-lint
 sudo -u vagrant pip3 install --user molecule[docker,lint]
+sudo -u vagrant pip3 install --user pytest-testinfra
 
 # Install Docker.
 curl -fsSL https://get.docker.com -o get-docker.sh

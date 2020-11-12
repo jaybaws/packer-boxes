@@ -3,6 +3,8 @@ node_memory = ENV["VSCLB_MEMORY"] || "512"
 node_cpus = ENV["VSCLB_CPUS"] || "2"
 node_ssh_port = ENV["VSCLB_SSH_PORT"] || 22222
 
+node_pkey = ENV["VSCLB_PKEY"]
+node_kh = ENV["VSCLB_KH"]
 node_timezone = ENV["VSCLB_TIMEZONE"]
 node_ps1 = ENV["VSCLB_PS1"]
 node_workspace_syncfolder = ENV["VSCLB_WORKSPACE"]
@@ -52,6 +54,22 @@ Vagrant.configure("2") do |config|
     if node_workspace_syncfolder
       instance.vm.synced_folder node_workspace_syncfolder, "/workspace"
     end
+
+    # If set, provision an SSH private key (so GIT will work right away).
+    if node_pkey
+      config.vm.provision "file", source: node_pkey, destination: "/home/vagrant/.ssh/id_rsa"
+      config.vm.provision "shell" do |s|
+        s.inline = "sudo chmod 600 /home/vagrant/.ssh/id_rsa"
+       end
+	end
+
+    # If set, provision an known_hosts file (so GIT will work right away).
+    if node_kh
+      config.vm.provision "file", source: node_kh, destination: "/home/vagrant/.ssh/known_hosts"
+      config.vm.provision "shell" do |s|
+        s.inline = "sudo chmod 644 /home/vagrant/.ssh/known_hosts"
+       end
+	end
 
   end
 end
