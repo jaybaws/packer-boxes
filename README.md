@@ -15,6 +15,7 @@ This (centos-7) box ships with:
 - Molecule
 - Docker
 - Testinfra
+- Azure CLI
 
 # Sources
 - My [Packer Sources](https://github.com/jaybaws/packer-boxes)
@@ -31,7 +32,7 @@ On Cygwin, or any Linux like command shell:
 ```
 mkdir myFolder
 cd myFolder
-export BOX_VER=1.0.2
+export BOX_VER=1.0.3
 vagrant box add --box-version $BOX_VER jaybaws/vscode-backend-centos7
 cp ~/.vagrant.d/boxes/jaybaws-VAGRANTSLASH-vscode-backend-centos7/$BOX_VER/virtualbox/Vagrantfile .
 ```
@@ -40,7 +41,7 @@ On the Windows command prompt:
 ```
 md myFolder
 cd myFolder
-set BOX_VER=1.0.2
+set BOX_VER=1.0.3
 vagrant box add --box-version %BOX_VER% jaybaws/vscode-backend-centos7
 copy %USERPROFILE%\.vagrant.d\boxes\jaybaws-VAGRANTSLASH-vscode-backend-centos7\%BOX_VER%\virtualbox\Vagrantfile
 ```
@@ -57,6 +58,7 @@ The following environment variables can be set (prior to `vagrant up`) to overri
 - `VSCLB_WORKSPACE`, optional. Specifies any local folder on the host that will be synced to `/workspace` within the guest VM.
 - `VSCLB_PKEY`, optional. Specifies the location to your local private SSH key. It wil be copied to `/home/vagrant/.ssh/id_rsa`, so GIT automatically works.
 - `VSCLB_KH`, optional. Specifies the location to your local `known_hosts` file. It will be copied to `/home/vagrant/.ssh/known_hosts`, so GIT automatically works.
+- `VSCLB_SCRIPT`, optional. Specifies the location to a local script. This script will be executed at the end of the provisioning phase. Use it to do final post-configuration.
 
 ## Spin it up
 

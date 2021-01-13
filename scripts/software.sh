@@ -20,3 +20,15 @@ systemctl enable docker
 # Install GIT.
 yum -y install https://packages.endpoint.com/rhel/7/os/x86_64/endpoint-repo-1.7-1.x86_64.rpm
 yum -y install git
+
+# Install Azure CLI
+rpm --import https://packages.microsoft.com/keys/microsoft.asc
+echo -e "[azure-cli]
+name=Azure CLI
+baseurl=https://packages.microsoft.com/yumrepos/azure-cli
+enabled=1
+gpgcheck=1
+gpgkey=https://packages.microsoft.com/keys/microsoft.asc" | tee /etc/yum.repos.d/azure-cli.repo
+yum -y install azure-cli
+yum -y install https://packages.microsoft.com/config/rhel/7/packages-microsoft-prod.rpm
+az extension add --name azure-devops

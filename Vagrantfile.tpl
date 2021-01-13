@@ -8,6 +8,7 @@ node_kh = ENV["VSCLB_KH"]
 node_timezone = ENV["VSCLB_TIMEZONE"]
 node_ps1 = ENV["VSCLB_PS1"]
 node_workspace_syncfolder = ENV["VSCLB_WORKSPACE"]
+node_script = ENV["VSCLB_SCRIPT"]
 
 Vagrant.configure("2") do |config|
 
@@ -69,6 +70,11 @@ Vagrant.configure("2") do |config|
       config.vm.provision "shell" do |s|
         s.inline = "sudo chmod 644 /home/vagrant/.ssh/known_hosts"
        end
+	end
+
+    # If set, execute the provided script.
+    if node_script
+      config.vm.provision "shell", path: node_script
 	end
 
   end
