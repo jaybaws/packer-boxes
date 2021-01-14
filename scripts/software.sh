@@ -31,4 +31,5 @@ gpgcheck=1
 gpgkey=https://packages.microsoft.com/keys/microsoft.asc" | tee /etc/yum.repos.d/azure-cli.repo
 yum -y install azure-cli
 yum -y install https://packages.microsoft.com/config/rhel/7/packages-microsoft-prod.rpm
-az extension add --name azure-devops
+yum -y install dotnet-sdk-5.0
+sudo -u vagrant az extension add --name azure-devops
