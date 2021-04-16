@@ -10,6 +10,9 @@ node_ps1 = ENV["VSCLB_PS1"]
 node_workspace_syncfolder = ENV["VSCLB_WORKSPACE"]
 node_script = ENV["VSCLB_SCRIPT"]
 
+node_forwards_tcp = ENV["VSCLB_FORWARDS_TCP"]
+node_forwards_udp = ENV["VSCLB_FORWARDS_UDP"]
+
 Vagrant.configure("2") do |config|
 
   # Stick to the default (insecure) key provided by Vagrant, so it is easy to integrate with VS Code.
@@ -25,6 +28,18 @@ Vagrant.configure("2") do |config|
 
     # Assure SSH daemon is on the expected port.
 	instance.vm.network :forwarded_port, guest: 22, host: node_ssh_port, id: 'ssh'
+
+	# Generically forward ports
+	if node_forwards_udp
+		JSON.parse(node_forwards_udp).each do |guest, host|
+		  instance.vm.network "forwarded_port", guest: "#{guest}", host: "#{host}", protocol: "udp"
+		end
+	end
+	if node_forwards_tcp
+		JSON.parse(node_forwards_tcp).each do |guest, host|
+		  instance.vm.network "forwarded_port", guest: "#{guest}", host: "#{host}", protocol: "tcp"
+		end
+	end
 
     # Customize VirtualBox VM size.
     instance.vm.provider :virtualbox do |vb|

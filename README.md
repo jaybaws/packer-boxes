@@ -33,7 +33,7 @@ On Cygwin, or any Linux like command shell:
 ```
 mkdir myFolder
 cd myFolder
-export BOX_VER=1.0.4
+export BOX_VER=1.0.5
 vagrant box add --box-version $BOX_VER jaybaws/vscode-backend-centos7
 cp ~/.vagrant.d/boxes/jaybaws-VAGRANTSLASH-vscode-backend-centos7/$BOX_VER/virtualbox/Vagrantfile .
 ```
@@ -42,7 +42,7 @@ On the Windows command prompt:
 ```
 md myFolder
 cd myFolder
-set BOX_VER=1.0.4
+set BOX_VER=1.0.5
 vagrant box add --box-version %BOX_VER% jaybaws/vscode-backend-centos7
 copy %USERPROFILE%\.vagrant.d\boxes\jaybaws-VAGRANTSLASH-vscode-backend-centos7\%BOX_VER%\virtualbox\Vagrantfile
 ```
@@ -60,6 +60,8 @@ The following environment variables can be set (prior to `vagrant up`) to overri
 - `VSCLB_PKEY`, optional. Specifies the location to your local private SSH key. It wil be copied to `/home/vagrant/.ssh/id_rsa`, so GIT automatically works.
 - `VSCLB_KH`, optional. Specifies the location to your local `known_hosts` file. It will be copied to `/home/vagrant/.ssh/known_hosts`, so GIT automatically works.
 - `VSCLB_SCRIPT`, optional. Specifies the location to a local script. This script will be executed at the end of the provisioning phase. Use it to do final post-configuration.
+- `VSCLB_FORWARDS_TCP`, optional. Specifies which TCP ports should be forwarded to the host. Format: `{ "443":443, "14140":14140, "14150":14150 }`
+- `VSCLB_FORWARDS_UDP`, optional. Specifies which UDP ports should be forwarded to the host. Simliar format as for TCP.
 
 ## Spin it up
 
