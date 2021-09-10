@@ -4,6 +4,7 @@
 yum -y install gcc python3-pip python3-devel openssl-devel python3-libselinux
 
 # Install Ansible, Molecule and linting tools.
+python3 -m pip install -U pip
 sudo -u vagrant pip3 install --user yamllint
 sudo -u vagrant pip3 install --user ansible
 sudo -u vagrant pip3 install --user ansible-lint
