@@ -35,3 +35,4 @@ jobs:
           target: box-config.json
         env:
           VAGRANT_CLOUD_TOKEN: ${{ secrets.VAGRANT_CLOUD_TOKEN }}
+          access_token: ${{ secrets.VAGRANT_CLOUD_TOKEN }}
