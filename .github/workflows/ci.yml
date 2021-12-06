@@ -16,24 +16,11 @@ jobs:
       - name: Use latest Packer
         uses: hashicorp-contrib/setup-packer@v1
 
-      - name: Debug shizzle
-        run: set
-        
-      - name: More debug
-        run: |
-          if [[ -z "${VAGRANT_CLOUD_TOKEN}" ]]; then
-            echo "VAGRANT_CLOUD_TOKEN is undefined"
-          else
-            echo "VAGRANT_CLOUD_TOKEN is defined!"
-          fi
-
       - name: Validate with Packer
         uses: hashicorp/packer-github-actions@v0.2.0
         with:
           command: validate
-          arguments: -var 'version=0.0.0'
+          arguments: "-syntax-only -var 'version=0.0.0'"
           target: box-config.json
-          access_token: ${{ secrets.VAGRANT_CLOUD_TOKEN }}
         env:
-          VAGRANT_CLOUD_TOKEN: ${{ secrets.VAGRANT_CLOUD_TOKEN }}
-          access_token: ${{ secrets.VAGRANT_CLOUD_TOKEN }}
+          PACKER_LOG: 1
