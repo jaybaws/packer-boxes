@@ -27,6 +27,14 @@ jobs:
 
       - name: Debug shizzle
         run: set
+        
+      - name: More debug
+        run: |
+          if [[ -z "${VAGRANT_CLOUD_TOKEN}" ]]; then
+            echo "VAGRANT_CLOUD_TOKEN is undefined"
+          else
+            echo "VAGRANT_CLOUD_TOKEN is defined!"
+          fi
 
       # Runs a single command using the runners shell
       - name: Validate with Packer
