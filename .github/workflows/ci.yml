@@ -26,5 +26,11 @@ jobs:
         uses: hashicorp-contrib/setup-packer@v1
 
       # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
+      - name: Validate with Packer
+        # You may pin to the exact commit or the version.
+        # uses: hashicorp/packer-github-actions@2ef5cf325f2beace99a1742903eb52542765c08f
+        uses: hashicorp/packer-github-actions@v0.2.0
+        with:
+          command: validate
+          # arguments:
+          target: box-config.json
