@@ -25,6 +25,9 @@ jobs:
       - name: Use latest Packer
         uses: hashicorp-contrib/setup-packer@v1
 
+      - name: Debug shizzle
+        run: set
+
       # Runs a single command using the runners shell
       - name: Validate with Packer
         # You may pin to the exact commit or the version.
