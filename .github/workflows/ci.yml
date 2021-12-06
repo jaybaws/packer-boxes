@@ -33,6 +33,7 @@ jobs:
           command: validate
           arguments: -var 'version=0.0.0'
           target: box-config.json
+          access_token: ${{ secrets.VAGRANT_CLOUD_TOKEN }}
         env:
           VAGRANT_CLOUD_TOKEN: ${{ secrets.VAGRANT_CLOUD_TOKEN }}
           access_token: ${{ secrets.VAGRANT_CLOUD_TOKEN }}
