@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use latest Packer
+        uses: hashicorp-contrib/setup-packer@v1
+
+      - name: Validate with Packer
+        uses: hashicorp/packer-github-actions@v0.2.0
+        with:
+          command: validate
+          arguments: "-syntax-only -var 'version=0.0.0'"
+          target: box-config.json
+        env:
+          PACKER_LOG: 1
