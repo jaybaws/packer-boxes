@@ -33,7 +33,7 @@ On Cygwin, or any Linux like command shell:
 ```
 mkdir myFolder
 cd myFolder
-export BOX_VER=1.0.6
+export BOX_VER=1.0.7
 vagrant box add --box-version $BOX_VER jaybaws/vscode-backend-centos7
 cp ~/.vagrant.d/boxes/jaybaws-VAGRANTSLASH-vscode-backend-centos7/$BOX_VER/virtualbox/Vagrantfile .
 ```
@@ -42,7 +42,7 @@ On the Windows command prompt:
 ```
 md myFolder
 cd myFolder
-set BOX_VER=1.0.6
+set BOX_VER=1.0.7
 vagrant box add --box-version %BOX_VER% jaybaws/vscode-backend-centos7
 copy %USERPROFILE%\.vagrant.d\boxes\jaybaws-VAGRANTSLASH-vscode-backend-centos7\%BOX_VER%\virtualbox\Vagrantfile
 ```
