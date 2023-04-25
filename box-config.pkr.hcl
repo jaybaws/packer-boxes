@@ -28,10 +28,6 @@ build {
   }
 
   post-processors {
-    post-processor "vagrant" {
-      output               = "builds/{{ .Provider }}-vscode-backend-centos8s.box"
-      vagrantfile_template = "Vagrantfile.tpl"
-    }
     post-processor "vagrant-cloud" {
       box_tag             = "jaybaws/vscode-backend-centos8s"
       version             = "${var.version}"

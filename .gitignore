@@ -3,3 +3,4 @@ output-virtualbox-iso/*
 *.box
 iso/*
 .vagrant/*
+output-devbox/
