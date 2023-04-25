@@ -53,7 +53,7 @@ Vagrant.configure("2") do |config|
     # If set, set to local time-zone.
     if node_timezone
       config.vm.provision "shell" do |s|
-        s.inline = "sudo rm /etc/localtime && sudo ln -s /usr/share/zoneinfo/$1 /etc/localtime"
+        s.inline = "sudo rm -f /etc/localtime && sudo ln -s /usr/share/zoneinfo/$1 /etc/localtime"
         s.args   = [node_timezone]
       end
 	end

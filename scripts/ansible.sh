@@ -1,7 +1,9 @@
-#!/bin/bash -eux
+#!/bin/bash
+sudo yum install -y epel-release
+sudo yum install -y ansible
 
-# Install EPEL.
-yum -y install epel-release
-
-# Install Ansible.
-yum -y install ansible
+sudo pip3.11 install \
+	docker \
+	selinux \
+	molecule ansible-lint \
+	"molecule-plugins[docker]"
