@@ -1,4 +1,4 @@
-node_name = "dev.linux.backend.local"
+node_name = ENV["VSCLB_FQDN"] || "dev.linux.backend.local"
 node_memory = ENV["VSCLB_MEMORY"] || "512"
 node_cpus = ENV["VSCLB_CPUS"] || "2"
 node_ssh_port = ENV["VSCLB_SSH_PORT"] || 22222
@@ -20,7 +20,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.define node_name do |instance|
     # Pick our Vagrant box!
-    instance.vm.box = "jaybaws/vscode-backend-centos7"
+    instance.vm.box = "jaybaws/vscode-backend-centos8s"
 
     # Set the hostname and IP address.
     instance.vm.hostname = node_name
