@@ -1,4 +1,4 @@
-# VS Code Backend - centos 7
+# VS Code Backend - centos 8 stream
 Are you a developer whose solutions are targeted at Linux runtimes? Does your company force you to use a Windows laptop?
 
 Yep, so much for [Shift-left testing](https://en.wikipedia.org/wiki/Shift-left_testing)...
@@ -7,21 +7,19 @@ I personally like writing code in VS Code, directly on my laptop. However, testi
 
 For testing, I have settled on defering all tests to a (local) VM that can be easily set up and disposed of. Ergo, this Vagrant box.
 
-This (centos-7) box ships with:
+This (centos8s) box ships with:
 
-- Yamllint
-- Ansible
-- Ansible-lint
-- Molecule
-- Docker
+- Python 3.11
+- Golang 1.19.4
+- Ansible 2.14.2
+- Ansible-lint 6.15.0
+- Molecule 5.0.0
+- Docker 23.0.4
+- Azure CLI 2.48.1
 - Testinfra
-- Azure CLI
-  - Azure DevOps extension (and it's dependencies)
 
 # Sources
 - My [Packer Sources](https://github.com/jaybaws/packer-boxes)
-
-Credits to Jeff Geerling, for [his repo](https://github.com/geerlingguy/packer-boxes/) that was used as a source of inspiration.
 
 # Operation
 
@@ -33,18 +31,18 @@ On Cygwin, or any Linux like command shell:
 ```
 mkdir myFolder
 cd myFolder
-export BOX_VER=1.0.7
-vagrant box add --box-version $BOX_VER jaybaws/vscode-backend-centos7
-cp ~/.vagrant.d/boxes/jaybaws-VAGRANTSLASH-vscode-backend-centos7/$BOX_VER/virtualbox/Vagrantfile .
+export BOX_VER=1.0.0
+vagrant box add --box-version $BOX_VER jaybaws/vscode-backend-centos8s
+cp ~/.vagrant.d/boxes/jaybaws-VAGRANTSLASH-vscode-backend-centos8s/$BOX_VER/virtualbox/Vagrantfile .
 ```
 
 On the Windows command prompt:
 ```
 md myFolder
 cd myFolder
-set BOX_VER=1.0.7
-vagrant box add --box-version %BOX_VER% jaybaws/vscode-backend-centos7
-copy %USERPROFILE%\.vagrant.d\boxes\jaybaws-VAGRANTSLASH-vscode-backend-centos7\%BOX_VER%\virtualbox\Vagrantfile
+set BOX_VER=1.0.0
+vagrant box add --box-version %BOX_VER% jaybaws/vscode-backend-centos8s
+copy %USERPROFILE%\.vagrant.d\boxes\jaybaws-VAGRANTSLASH-vscode-backend-centos8s\%BOX_VER%\virtualbox\Vagrantfile
 ```
 
 ### Customize the VM (optional)

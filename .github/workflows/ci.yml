@@ -11,16 +11,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Use latest Packer
-        uses: hashicorp-contrib/setup-packer@v1
+        uses: hashicorp-contrib/setup-packer@v2
 
-      - name: Validate with Packer
-        uses: hashicorp/packer-github-actions@v0.2.0
-        with:
-          command: validate
-          arguments: "-syntax-only -var 'version=0.0.0'"
-          target: box-config.json
+      - name: Run `packer validate`
+        id: validate
+        run: "packer validate -syntax-only -var 'version=0.0.0' ./box-config.pkr.hcl"
         env:
           PACKER_LOG: 1
