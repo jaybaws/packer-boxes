@@ -21,6 +21,6 @@ jobs:
         with:
           command: validate
           arguments: "-syntax-only -var 'version=0.0.0'"
-          target: box-config.json
+          target: box-config.pkr.hcl
         env:
           PACKER_LOG: 1
