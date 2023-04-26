@@ -49,6 +49,7 @@ copy %USERPROFILE%\.vagrant.d\boxes\jaybaws-VAGRANTSLASH-vscode-backend-centos8s
 
 The following environment variables can be set (prior to `vagrant up`) to override any of the VM settings:
 
+- `VSCLB_FQDN`, default = `dev.linux.backend.local`.
 - `VSCLB_MEMORY`, default = `512`.
 - `VSCLB_CPUS`, default = `2`.
 - `VSCLB_SSH_PORT`, default = `22222`.
