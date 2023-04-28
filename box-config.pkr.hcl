@@ -3,12 +3,13 @@ variable "version" {
 }
 
 source "vagrant" "devbox" {
-  source_path  = "generic/centos8s"
-  box_version  = "4.2.16"
-  provider     = "virtualbox"
-  add_force    = true
-  communicator = "ssh"
-  template     = "Vagrantfile_init"
+  source_path          = "generic/centos8s"
+  box_version          = "4.2.16"
+  provider             = "virtualbox"
+  add_force            = true
+  communicator         = "ssh"
+  template             = "Vagrantfile_init"
+  vagrantfile_template = "Vagrantfile.tpl"
 }
 
 build {
