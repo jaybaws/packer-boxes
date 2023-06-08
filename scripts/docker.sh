@@ -1,5 +1,6 @@
 #!/bin/bash
-sudo yum remove docker \
+sudo yum remove \
+	docker \
 	docker-client \
 	docker-client-latest \
 	docker-common \
@@ -13,9 +14,14 @@ sudo yum-config-manager \
 	--add-repo \
 	https://download.docker.com/linux/centos/docker-ce.repo
 
-sudo yum install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo yum install -y \
+	docker-ce \
+	docker-ce-cli \
+	containerd.io \
+	docker-buildx-plugin \
+	docker-compose-plugin
 
-sudo usermod -aG docker vagrant
+sudo usermod -aG docker $TARGET_USER
 
 sudo systemctl enable docker.service
 sudo systemctl enable containerd.service

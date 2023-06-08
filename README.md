@@ -9,13 +9,13 @@ For testing, I have settled on defering all tests to a (local) VM that can be ea
 
 This (centos8s) box ships with:
 
-- Python 3.11
-- Golang 1.19.4
-- Ansible 2.14.2
-- Ansible-lint 6.15.0
-- Molecule 5.0.0
-- Docker 23.0.4
-- Azure CLI 2.48.1
+- Python 3.11.2
+- Golang 1.20.3
+- Ansible 2.15.0
+- Ansible-lint 6.16.2
+- Molecule 5.0.1
+- Docker 24.0.2
+- Azure CLI 2.49.0
 - Testinfra
 
 # Sources
@@ -31,7 +31,7 @@ On Cygwin, or any Linux like command shell:
 ```
 mkdir myFolder
 cd myFolder
-export BOX_VER=1.0.0
+export BOX_VER=1.0.1
 vagrant box add --box-version $BOX_VER jaybaws/vscode-backend-centos8s
 cp ~/.vagrant.d/boxes/jaybaws-VAGRANTSLASH-vscode-backend-centos8s/$BOX_VER/virtualbox/Vagrantfile .
 ```
@@ -40,7 +40,7 @@ On the Windows command prompt:
 ```
 md myFolder
 cd myFolder
-set BOX_VER=1.0.0
+set BOX_VER=1.0.1
 vagrant box add --box-version %BOX_VER% jaybaws/vscode-backend-centos8s
 copy %USERPROFILE%\.vagrant.d\boxes\jaybaws-VAGRANTSLASH-vscode-backend-centos8s\%BOX_VER%\virtualbox\Vagrantfile
 ```
