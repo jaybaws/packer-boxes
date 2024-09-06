@@ -1,4 +1,4 @@
-# VS Code Backend - centos 8 stream
+# VS Code Backend - Ubuntu 22.04 LTS
 Are you a developer whose solutions are targeted at Linux runtimes? Does your company force you to use a Windows laptop?
 
 Yep, so much for [Shift-left testing](https://en.wikipedia.org/wiki/Shift-left_testing)...
@@ -7,16 +7,18 @@ I personally like writing code in VS Code, directly on my laptop. However, testi
 
 For testing, I have settled on defering all tests to a (local) VM that can be easily set up and disposed of. Ergo, this Vagrant box.
 
-This (centos8s) box ships with:
+This (ubuntu2204) box ships with:
 
-- Python 3.11.2
-- Golang 1.20.3
+- Python 3.11.9
+- Golang 1.20.14
 - Ansible 2.15.0
 - Ansible-lint 6.16.2
 - Molecule 5.0.1
-- Docker 24.0.2
-- Azure CLI 2.49.0
-- Testinfra
+- Docker 27.2.0
+- Azure CLI 2.64.0
+- Helm 3.15.4
+- Minikube 1.33.1
+- Kubectl 1.31.0
 
 # Sources
 - My [Packer Sources](https://github.com/jaybaws/packer-boxes)
@@ -32,8 +34,8 @@ On Cygwin, or any Linux like command shell:
 mkdir myFolder
 cd myFolder
 export BOX_VER=1.0.1
-vagrant box add --box-version $BOX_VER jaybaws/vscode-backend-centos8s
-cp ~/.vagrant.d/boxes/jaybaws-VAGRANTSLASH-vscode-backend-centos8s/$BOX_VER/virtualbox/Vagrantfile .
+vagrant box add --box-version $BOX_VER jaybaws/vscode-backend-ubuntu2204
+cp ~/.vagrant.d/boxes/jaybaws-VAGRANTSLASH-vscode-backend-ubuntu2204/$BOX_VER/virtualbox/include/Vagrantfile.tpl ./Vagrantfile
 ```
 
 On the Windows command prompt:
@@ -41,8 +43,8 @@ On the Windows command prompt:
 md myFolder
 cd myFolder
 set BOX_VER=1.0.1
-vagrant box add --box-version %BOX_VER% jaybaws/vscode-backend-centos8s
-copy %USERPROFILE%\.vagrant.d\boxes\jaybaws-VAGRANTSLASH-vscode-backend-centos8s\%BOX_VER%\virtualbox\Vagrantfile
+vagrant box add --box-version %BOX_VER% jaybaws/vscode-backend-ubuntu2204
+copy %USERPROFILE%\.vagrant.d\boxes\jaybaws-VAGRANTSLASH-vscode-backend-ubuntu2204\%BOX_VER%\virtualbox\include\Vagrantfile.tpl Vagrantfile
 ```
 
 ### Customize the VM (optional)

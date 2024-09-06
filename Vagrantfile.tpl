@@ -15,16 +15,23 @@ node_forwards_udp = ENV["VSCLB_FORWARDS_UDP"]
 
 Vagrant.configure("2") do |config|
 
+  config.hostmanager.enabled = true
+  config.hostmanager.manage_host = true
+  config.hostmanager.manage_guest = true
+  config.hostmanager.ignore_private_ip = false
+  config.hostmanager.include_offline = true
+
   # Stick to the default (insecure) key provided by Vagrant, so it is easy to integrate with VS Code.
   config.ssh.insert_key = false
 
   config.vm.define node_name do |instance|
     # Pick our Vagrant box!
-    instance.vm.box = "jaybaws/vscode-backend-centos8s"
+    instance.vm.box = "jaybaws/vscode-backend-ubuntu2204"
+	instance.vm.box_version = ">= 1.0, < 2.0"
 
     # Set the hostname and IP address.
     instance.vm.hostname = node_name
-    instance.vm.network :private_network, type: "dhcp"
+    instance.vm.network :private_network, ip: "192.168.50.4"
 
     # Assure SSH daemon is on the expected port.
 	instance.vm.network :forwarded_port, guest: 22, host: node_ssh_port, id: 'ssh'
